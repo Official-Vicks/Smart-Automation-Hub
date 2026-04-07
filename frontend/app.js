@@ -250,4 +250,5 @@ function init() {
 }
 
 init();
-setInterval(fetchLogs, 50000);
+setInterval(fetchLogs, 5000);
+setInterval(getStatus, 5000);
