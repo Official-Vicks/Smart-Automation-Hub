@@ -255,12 +255,12 @@ function showToast(message, type = "info") {
   }, 2500);
 }
 
-function showEmptyLogs(message = "No activity yet...") {
+function showEmptyLogs() {
   const logs = document.getElementById("logs");
 
   logs.innerHTML = `
     <div class="text-gray-400 text-center mt-10">
-      ${message}
+      No activity yet...
     </div>
   `;
 }
