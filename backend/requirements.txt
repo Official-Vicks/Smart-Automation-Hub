@@ -1,5 +1,6 @@
 fastapi
 uvicorn[standard]
+watchdog
 
 # Data validation
 pydantic
