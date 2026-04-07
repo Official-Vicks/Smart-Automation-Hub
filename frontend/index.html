@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Automation Dashboard</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- External stylings -->
+    <link rel="stylesheet" href="/static/style.css" />
+
+    <!-- web icon -->
+    <link
+      rel="icon"
+      type="image/jpg"
+      sizes="32x32"
+      href="/static/icons/favicon.jpg?v=1"
+    />
+    <link rel="shortcut icon" href="/static/icons/favicon.jpg?v=1" />
+  </head>
+
+  <body
+    class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white min-h-screen"
+  >
+    <!-- HEADER -->
+    <header class="flex justify-between items-center p-6">
+      <h1 class="text-2xl font-bold flex items-center gap-2">
+        ⚡ Automation Hub
+      </h1>
+
+      <div id="status" class="px-4 py-2 rounded-full bg-gray-700 text-sm">
+        Checking...
+      </div>
+    </header>
+
+    <!-- MAIN GRID -->
+    <main class="grid grid-cols-1 md:grid-cols-2 gap-6 px-6 pb-6">
+      <!-- ORGANIZER CARD -->
+      <div
+        class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl shadow-lg hover:scale-[1.02] transition"
+      >
+        <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+          📂 File Organizer
+        </h2>
+
+        <input
+          id="directory"
+          type="text"
+          placeholder="Enter directory path..."
+          class="w-full p-3 rounded-lg bg-gray-800 border border-gray-600 mb-4 focus:outline-none"
+        />
+
+        <div class="flex gap-3">
+          <button
+            onclick="startOrganizer(event)"
+            class="flex-1 bg-green-500 hover:bg-green-600 transition p-3 rounded-lg disabled:opacity-50"
+          >
+            Start
+          </button>
+
+          <button
+            onclick="stopOrganizer(event)"
+            class="flex-1 bg-red-500 hover:bg-red-600 transition p-3 rounded-lg disabled:opacity-50"
+          >
+            Stop
+          </button>
+        </div>
+      </div>
+
+      <!-- TASK CARD -->
+      <div
+        class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl shadow-lg hover:scale-[1.02] transition"
+      >
+        <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+          ⏰ Task Reminder
+        </h2>
+
+        <input
+          id="task"
+          type="text"
+          placeholder="Enter task..."
+          class="w-full p-3 rounded-lg bg-gray-800 border border-gray-600 mb-3"
+        />
+
+        <input
+          id="description"
+          type="text"
+          placeholder="Enter description..."
+          class="w-full p-3 rounded-lg bg-gray-800 border border-gray-600 mb-4"
+        />
+
+        <input
+          id="time"
+          type="datetime-local"
+          class="w-full p-3 rounded-lg bg-gray-800 border border-gray-600 mb-5"
+        />
+
+        <button
+          onclick="addTask(event)"
+          class="w-full bg-blue-500 hover:bg-blue-600 transition p-3 rounded-lg disabled:opacity-50"
+        >
+          Add Task
+        </button>
+      </div>
+
+      <!-- ACTIVITY FEED -->
+      <div
+        class="md:col-span-2 bg-white/10 backdrop-blur-lg p-6 rounded-2xl shadow-lg"
+      >
+        <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+          📊 Live Activity
+        </h2>
+
+        <div
+          id="logs"
+          class="h-72 overflow-y-auto bg-black/30 p-4 rounded-lg text-sm space-y-1"
+        ></div>
+      </div>
+    </main>
+
+    <script>
+      lucide.createIcons();
+    </script>
+
+    <div id="toast-container" class="fixed top-5 right-5 space-y-2 z-50"></div>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
