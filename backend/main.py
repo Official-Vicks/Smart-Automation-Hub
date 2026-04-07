@@ -30,13 +30,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-frontend_path = Path(__file__).resolve().parent.parent / "frontend"
+# frontend_path = Path(__file__).resolve().parent.parent / "frontend"
 
-app.mount("/static", StaticFiles(directory=frontend_path), name="static")
+# app.mount("/static", StaticFiles(directory=frontend_path), name="static")
+
+# @app.get("/")
+# def serve_frontend():
+#     return FileResponse(frontend_path / "index.html")
 
 @app.get("/")
-def serve_frontend():
-    return FileResponse(frontend_path / "index.html")
+def root():
+    return {"message": "Smart Automation Hub API is running"}
 
 # Include routes
 app.include_router(router)
