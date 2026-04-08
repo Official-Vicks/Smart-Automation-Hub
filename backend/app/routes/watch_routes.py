@@ -2,9 +2,10 @@ from fastapi import APIRouter, HTTPException
 from app.services.watcher import Watcher
 from app.services import config
 from app.schemas.watch_schemas import StartRequest
+import os
 
 router = APIRouter()
-
+LOG_FILE = "activity.log"
 
 @router.post("/start")
 def start(req: StartRequest):
@@ -50,9 +51,11 @@ def status():
 
 @router.get("/logs")
 def get_logs():
-    try:
-        with open("activity.log", "r", encoding="utf-8") as f:
-            lines = f.readlines()[-20:]  # last 20 logs
-        return {"logs": lines}
-    except:
+    if not os.path.exists(LOG_FILE):
         return {"logs": []}
+
+    with open(LOG_FILE, "r", encoding="utf-8") as f:
+        content = f.read()
+    logs = [line.strip() for line in content.splitlines() if line.strip()]
+
+    return {"logs": logs}
