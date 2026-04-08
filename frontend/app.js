@@ -1,6 +1,6 @@
 let lastLogs = [];
 
-const API_BASE = "https://smart-automation-hub.onrender.com";
+const API_BASE = "http://127.0.0.1:8000";
 
 // 🔒 Locks to prevent overlapping requests
 let isFetchingLogs = false;
@@ -124,13 +124,20 @@ async function fetchLogs() {
 
     const logsContainer = document.getElementById("logs");
 
-    logsContainer.innerHTML = "";
-
+    // Only update UI if we actually received logs
     if (!data.logs || data.logs.length === 0) {
-      showEmptyLogs();
-      lastLogs = [];
+      console.log("Empty logs received — ignoring to prevent wipe");
+
+      // Only show empty if we NEVER had logs before
+      if (lastLogs.length === 0) {
+        showEmptyLogs();
+      }
+
       return;
     }
+
+    // Now we KNOW logs exist → safe to update UI
+    logsContainer.innerHTML = "";
 
     data.logs.forEach((message) => {
       const logItem = document.createElement("div");

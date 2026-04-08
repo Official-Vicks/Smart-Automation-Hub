@@ -12,16 +12,16 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- External stylings -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/static/style.css" />
 
     <!-- web icon -->
     <link
       rel="icon"
       type="image/jpg"
       sizes="32x32"
-      href="icons/favicon.jpg?v=1"
+      href="/static/icons/favicon.jpg?v=1"
     />
-    <link rel="shortcut icon" href="icons/favicon.jpg?v=1" />
+    <link rel="shortcut icon" href="/static/icons/favicon.jpg?v=1" />
   </head>
 
   <body
@@ -94,7 +94,13 @@
           class="w-full p-3 rounded-lg bg-gray-800 border border-gray-600 mb-4"
         />
 
+        <label
+          for="time"
+          class="text-md font-semibold mb-4 flex items-center gap-2"
+          >To be completed in:</label
+        >
         <input
+          name="time"
           id="time"
           type="datetime-local"
           class="w-full p-3 rounded-lg bg-gray-800 border border-gray-600 mb-5"
@@ -128,6 +134,6 @@
     </script>
 
     <div id="toast-container" class="fixed top-5 right-5 space-y-2 z-50"></div>
-    <script src="app.js"></script>
+    <script src="/static/app.js"></script>
   </body>
 </html>
