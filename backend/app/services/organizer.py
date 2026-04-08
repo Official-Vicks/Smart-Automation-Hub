@@ -10,6 +10,7 @@ FILE_CATEGORIES = {
     "music": [".mp3", ".wav"]
 }
 
+LOG_FILE = "activity.log"
 
 def get_category(file_name: str):
     _, ext = os.path.splitext(file_name.lower())
@@ -60,7 +61,8 @@ def move_file(file_path: str, base_dir: str):
         shutil.move(file_path, target_path)
         print(f"[{moved_at}][MOVED] {file_name} → {category}/")
 
-        with open("activity.log", "a", encoding="utf-8") as f:
+        with open(LOG_FILE, "a", encoding="utf-8") as f:
             f.write(f"[{moved_at}]Moved {file_name} → {category}\n")
+            f.flush()
     except Exception as e:
         print(f"[ERROR] {e}")
