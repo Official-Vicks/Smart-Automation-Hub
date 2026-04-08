@@ -15,13 +15,13 @@ def check_due_tasks():
         now = datetime.utcnow()
 
         tasks = db.query(Task).filter(
-            Task.due_time <= now,
+            Task.due_time != now,
             Task.is_notified == False,
             Task.is_completed == False
         ).all()
 
         for task in tasks:
-            print(f"Reminder: {task.title} (Due: {task.due_time})")
+            print(f"Reminder: {task.title} (Due: {task.due_time})\n")
             with open("activity.log", "a", encoding="utf-8") as f:
                 f.write(f"Reminder: {task.title} (Due: {task.due_time})\n")
 
