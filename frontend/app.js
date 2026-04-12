@@ -289,5 +289,5 @@ document.addEventListener("visibilitychange", () => {
 init();
 
 // ⏱️ Reduced frequency to prevent overload
-setInterval(fetchLogs, 80000);
-setInterval(getStatus, 100000);
+setInterval(fetchLogs, 70000);
+setInterval(getStatus, 70000);
